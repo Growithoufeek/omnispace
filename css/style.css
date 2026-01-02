@@ -228,7 +228,7 @@ a:hover {
     background-color: rgba(250, 248, 243, 0.95);
     backdrop-filter: saturate(180%) blur(24px);
     -webkit-backdrop-filter: saturate(180%) blur(24px);
-    border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+    border-bottom: 1px solid rgba(26, 26, 26, 0.05);
     z-index: 1000;
     transition: all var(--transition-base);
 }
@@ -351,9 +351,9 @@ a:hover {
 .mobile-menu-toggle {
     display: none;
     background: transparent;
-    border: 1px solid rgba(26, 26, 26, 0.2);
+    border: none;
     cursor: pointer;
-    padding: var(--spacing-sm);
+    padding: var(--spacing-xs);
     font-size: var(--font-size-2xl);
     color: var(--color-charcoal);
     transition: all var(--transition-fast);
@@ -364,14 +364,16 @@ a:hover {
     z-index: 1001;
     position: relative;
     line-height: 1;
+    border-radius: 8px;
 }
 
 .mobile-menu-toggle:active {
-    background: rgba(26, 26, 26, 0.1);
+    background: rgba(26, 26, 26, 0.05);
 }
 
 .mobile-menu-toggle:hover {
     color: var(--color-muted-gold);
+    background: rgba(26, 26, 26, 0.03);
 }
 
 /* Mobile Menu */
@@ -384,18 +386,20 @@ a:hover {
     background-color: rgba(250, 248, 243, 0.98);
     backdrop-filter: saturate(180%) blur(24px);
     -webkit-backdrop-filter: saturate(180%) blur(24px);
-    border-bottom: 1px solid rgba(26, 26, 26, 0.1);
-    padding: var(--spacing-xl);
+    border-bottom: 1px solid rgba(26, 26, 26, 0.05);
+    padding: var(--spacing-lg) var(--spacing-md);
     z-index: 999;
     transform: translateY(-100%);
-    transition: transform var(--transition-base);
-    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transition: transform var(--transition-base), opacity var(--transition-base);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     max-height: calc(100vh - 80px);
     overflow-y: auto;
 }
 
 .mobile-menu.active {
     transform: translateY(0);
+    opacity: 1;
     display: block !important;
 }
 
@@ -409,18 +413,22 @@ a:hover {
 .mobile-menu a {
     font-size: var(--font-size-base);
     color: var(--color-charcoal);
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-md) var(--spacing-sm);
     display: block;
-    border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+    border-bottom: 1px solid rgba(26, 26, 26, 0.05);
     font-weight: var(--font-weight-regular);
-    transition: color var(--transition-fast);
+    transition: all var(--transition-fast);
     letter-spacing: 0.05em;
     text-transform: uppercase;
+    border-radius: 4px;
+    margin-bottom: var(--spacing-xs);
 }
 
 .mobile-menu a:hover,
 .mobile-menu a.active {
     color: var(--color-muted-gold);
+    background: rgba(26, 26, 26, 0.02);
+    padding-left: var(--spacing-md);
 }
 
 /* Hero Section - Ultra-Luxury Full-Screen Cinematic */
@@ -1234,6 +1242,8 @@ a:hover {
         order: 3;
         visibility: visible !important;
         opacity: 1 !important;
+        border: none;
+        background: transparent;
     }
     
     .nav {
@@ -1242,6 +1252,11 @@ a:hover {
         flex-wrap: nowrap;
         justify-content: space-between;
         width: 100%;
+        gap: var(--spacing-sm);
+    }
+    
+    .header {
+        border-bottom: 1px solid rgba(26, 26, 26, 0.03);
     }
     
     .logo {
@@ -1269,6 +1284,7 @@ a:hover {
         display: block !important;
         top: 70px;
         max-height: calc(100vh - 70px);
+        border-bottom: 1px solid rgba(26, 26, 26, 0.03);
     }
     
     .cta-button {
@@ -1590,8 +1606,8 @@ a:hover {
     pointer-events: none;
     z-index: 1;
     overflow: hidden;
-    display: block !important;
-    visibility: visible !important;
+    display: none !important;
+    visibility: hidden !important;
 }
 
 /* Base styles for all floating vector elements - SHARP & VISIBLE */
@@ -2362,126 +2378,17 @@ a:hover {
 
 /* Mobile Animation Disable & Floating Elements Optimization */
 @media (max-width: 768px) {
-    /* Keep floating elements visible on mobile but reduce quantity and opacity */
+    /* All floating elements disabled on mobile */
     .floating-elements {
-        display: block !important;
-        visibility: visible !important;
+        display: none !important;
+        visibility: hidden !important;
     }
     
-    /* Keep visible but slightly reduce opacity on mobile */
-    .floating-vector {
-        opacity: 0.45 !important;
-        filter: blur(1px);
-        display: block !important;
-        visibility: visible !important;
-    }
-    
-    /* Hide some elements on mobile to reduce clutter */
-    .floating-vector.pendant-light-2,
-    .floating-vector.vase,
-    .floating-vector.column,
-    .floating-interior.pillar,
-    .floating-interior.curtain {
-        display: none;
-    }
-    
-    /* Scale down remaining elements but keep them visible */
-    .floating-vector.pendant-light {
-        width: 45px;
-        height: 70px;
-        opacity: 0.5 !important;
-    }
-    
-    .floating-vector.lamp {
-        width: 40px;
-        height: 65px;
-        opacity: 0.48 !important;
-    }
-    
-    .floating-vector.chair {
-        width: 55px;
-        height: 40px;
-        opacity: 0.45 !important;
-    }
-    
-    .floating-vector.architectural-arc {
-        width: 75px;
-        height: 30px;
-        opacity: 0.5 !important;
-    }
-    
-    .floating-vector.geometric-line {
-        width: 70px;
-        opacity: 0.5 !important;
-    }
-    
-    /* Decorative shapes on mobile */
-    .floating-decor {
-        opacity: 0.45 !important;
-        display: block !important;
-        visibility: visible !important;
-        filter: blur(1px);
-    }
-    
-    .floating-decor.circle-1 {
-        width: 40px;
-        height: 40px;
-        opacity: 0.5 !important;
-    }
-    
-    .floating-decor.circle-2 {
-        width: 28px;
-        height: 28px;
-        opacity: 0.48 !important;
-    }
-    
-    .floating-decor.square-1 {
-        width: 32px;
-        height: 32px;
-        opacity: 0.46 !important;
-    }
-    
-    .floating-decor.line-pattern {
-        width: 60px;
-        opacity: 0.5 !important;
-    }
-    
-    .floating-decor.dots {
-        width: 45px;
-        height: 45px;
-        opacity: 0.45 !important;
-    }
-    
-    /* Interior elements on mobile */
+    .floating-vector,
+    .floating-decor,
     .floating-interior {
-        opacity: 0.45 !important;
-        filter: blur(1px);
-        display: block !important;
-        visibility: visible !important;
-    }
-    
-    .floating-interior.window {
-        width: 55px;
-        height: 70px;
-        opacity: 0.5 !important;
-    }
-    
-    .floating-interior.table {
-        width: 60px;
-        height: 38px;
-        opacity: 0.48 !important;
-    }
-    
-    .floating-interior.plant {
-        width: 35px;
-        height: 50px;
-        opacity: 0.45 !important;
-    }
-    
-    .floating-interior.mirror {
-        width: 40px;
-        height: 55px;
-        opacity: 0.45 !important;
+        display: none !important;
+        visibility: hidden !important;
     }
     
     .parallax-bg {
